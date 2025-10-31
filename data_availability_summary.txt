@@ -1,0 +1,45 @@
+Loading processed fire perimeters...
+
+======================================================================
+ML TRAINING PAIRS - STEP-BY-STEP FILTERING
+======================================================================
+
+STEP 0: Starting dataset                          
+  Total perimeters: 159,225
+  Total incidents: 134,403
+
+STEP 1: Filter to multi-perimeter incidents       
+  Before: 134,403 incidents
+  Removed (single perimeter): 125,384 incidents
+  After: 9,019 incidents
+  Total pairs: 24,822
+
+STEP 2: Filter to incidents with all dates        
+  Before: 9,019 incidents
+  Removed (missing dates): 5,261 incidents
+  After: 3,758 incidents
+  Total pairs: 14,472
+
+STEP 3: Remove pairs with same timestamp          
+  Before: 3,758 incidents, 14,472 pairs
+  Removed pairs (same timestamp): 8,139
+  After: 2,649 incidents, 6,333 pairs
+
+STEP 4: Remove pairs with gap > 6 days            
+  Before: 2,649 incidents, 6,333 pairs
+  Removed pairs (gap > 6 days): 3,596
+  After: 512 incidents, 2,737 pairs
+
+======================================================================
+FINAL SUMMARY
+======================================================================
+
+Usable for ML training:
+  Incidents: 512
+  Training pairs: 2,737
+
+Reduction from original dataset:
+  Started with: 134,403 incidents
+  Ended with: 512 incidents (0.4%)
+
+======================================================================
