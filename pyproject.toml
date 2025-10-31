@@ -1,0 +1,15 @@
+[project]
+name = "fire-perimeter-processor"
+version = "0.1.0"
+description = "Process wildfire perimeter shapefiles into unified Parquet format"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "geopandas>=0.14.0",
+    "pandas>=2.0.0",
+    "pyarrow>=14.0.0",
+    "shapely>=2.0.0",
+]
+
+[project.scripts]
+process-perimeters = "process_fire_perimeters:main"
