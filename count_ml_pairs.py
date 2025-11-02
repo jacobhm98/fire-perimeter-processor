@@ -9,8 +9,6 @@ Filters applied:
 """
 
 import geopandas as gpd
-import pandas as pd
-import numpy as np
 
 
 def main():
@@ -56,7 +54,9 @@ def main():
         total_pairs_with_dates += len(group) - 1
 
     print(f"  Before: {before_date_filter:,} incidents")
-    print(f"  Removed (missing dates): {before_date_filter - after_date_filter:,} incidents")
+    print(
+        f"  Removed (missing dates): {before_date_filter - after_date_filter:,} incidents"
+    )
     print(f"  After: {after_date_filter:,} incidents")
     print(f"  Total pairs: {total_pairs_with_dates:,}")
 
@@ -89,9 +89,13 @@ def main():
             filtered_incidents.append(incident_id)
             pairs_after_timestamp_filter += unique_pairs
 
-    print(f"  Before: {after_date_filter:,} incidents, {pairs_before_timestamp_filter:,} pairs")
+    print(
+        f"  Before: {after_date_filter:,} incidents, {pairs_before_timestamp_filter:,} pairs"
+    )
     print(f"  Removed pairs (same timestamp): {same_timestamp_pairs_removed:,}")
-    print(f"  After: {len(filtered_incidents):,} incidents, {pairs_after_timestamp_filter:,} pairs")
+    print(
+        f"  After: {len(filtered_incidents):,} incidents, {pairs_after_timestamp_filter:,} pairs"
+    )
 
     # Step 4: Remove pairs with gap > 6 days
     print(f"\n{'STEP 4: Remove pairs with gap > 6 days':<50}")
@@ -124,9 +128,13 @@ def main():
             final_incidents.append(incident_id)
             pairs_after_day_filter += valid_pairs
 
-    print(f"  Before: {len(filtered_incidents):,} incidents, {pairs_before_day_filter:,} pairs")
+    print(
+        f"  Before: {len(filtered_incidents):,} incidents, {pairs_before_day_filter:,} pairs"
+    )
     print(f"  Removed pairs (gap > 6 days): {pairs_removed_long_gap:,}")
-    print(f"  After: {len(final_incidents):,} incidents, {pairs_after_day_filter:,} pairs")
+    print(
+        f"  After: {len(final_incidents):,} incidents, {pairs_after_day_filter:,} pairs"
+    )
 
     # Final summary
     print(f"\n{'=' * 70}")
@@ -137,7 +145,9 @@ def main():
     print(f"  Training pairs: {pairs_after_day_filter:,}")
     print(f"\nReduction from original dataset:")
     print(f"  Started with: {gdf['incident_id'].nunique():,} incidents")
-    print(f"  Ended with: {len(final_incidents):,} incidents ({100 * len(final_incidents) / gdf['incident_id'].nunique():.1f}%)")
+    print(
+        f"  Ended with: {len(final_incidents):,} incidents ({100 * len(final_incidents) / gdf['incident_id'].nunique():.1f}%)"
+    )
     print(f"\n{'=' * 70}")
 
 
